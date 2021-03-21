@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     private boolean firstInput = true; //첫 입력은 무조건 true
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button[] number_btn = new Button[10];
     Button[] operator_btn = new Button[5];
 
-    CalculatorClass calculatorClass = new CalculatorClass();
+    CalculatorClass calculatorClass = new CalculatorClass(new DecimalFormat("###,###.#############"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void decimalClick(View view) {
         if(firstInput){
-            resultTextView.setTextColor(getResources().getColor(R.color.black));
+            resultTextView.setTextColor(getResources().getColor(R.color.white));
             resultTextView.setText("0.");
             firstInput = false;
         } else {
@@ -115,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
                 String getNumber = resultTextView.getText().toString().replace(",", "");
                 String subString = getNumber.substring(0, getNumber.length() -1);
                 String decimalNumber = calculatorClass.getDecimal(subString);
+                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O){
+                    resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getSize(decimalNumber));
+                }
                 resultTextView.setText(decimalNumber);
             } else{
                 clearData();
@@ -136,14 +141,29 @@ public class MainActivity extends AppCompatActivity {
         String getResultNumber = resultTextView.getText().toString();
         String operator = view.getTag().toString();
         String getNumber = calculatorClass.getResult(firstInput, getResultNumber, operator);
+        if(getNumber.equals("error")){
+            resultTextView.setText("오류");
+            for(int i=0;i<operator_btn.length;i++){
+                operator_btn[i].setClickable(false);
+            }
+            decimalButton.setClickable(false);
+
+            for(int i=0;i<number_btn.length;i++){
+                number_btn[i].setClickable(false);
+            }
+            return;
+        }
         resultTextView.setText(getNumber);
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O){
+            resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getSize(getNumber));
+        }
         historyTextView.setText(calculatorClass.getOperatorStr());
         firstInput = true;
     }
 
     private void numberClick(View view) {
         if(firstInput){
-            resultTextView.setTextColor(getResources().getColor(R.color.black));
+            resultTextView.setTextColor(getResources().getColor(R.color.white));
             resultTextView.setText(view.getTag().toString());
             firstInput = false;
         }
@@ -155,15 +175,24 @@ public class MainActivity extends AppCompatActivity {
                 number = number + view.getTag().toString();
                 String getNumberString = calculatorClass.getDecimal(number);
                 if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O){
-                    if(getNumberString.length() > 13){
-                        resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
-                    } else if(getNumberString.length() > 18){
-                        resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-                    }
+                    resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getSize(getNumberString));
                 }
                 resultTextView.setText(getNumberString);
             }
         }
+    }
+
+    private int getSize(String getNumberString) {
+        if(getNumberString.length() > 30){
+            return 30;
+        } else if(getNumberString.length() > 25){
+            return 25;
+        } else if(getNumberString.length() > 20){
+            return 35;
+        } else if(getNumberString.length() > 15){
+            return 30;
+        }
+        return 50;
     }
 
 
@@ -172,5 +201,9 @@ public class MainActivity extends AppCompatActivity {
         resultTextView.setTextColor(getResources().getColor(R.color.gray));
         resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50);
         resultTextView.setText(CalculatorClass.CLEAR_INPUT);
+    }
+
+    public TextView getResultView(){
+        return resultTextView;
     }
 }

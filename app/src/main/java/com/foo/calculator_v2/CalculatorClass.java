@@ -11,7 +11,16 @@ public class CalculatorClass {
     private String operator = "+";
     private String operatorStr = "";
 
-    DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
+    DecimalFormat decimalFormat;
+
+
+    public CalculatorClass(DecimalFormat decimalFormat) {
+        this.decimalFormat = decimalFormat;
+    }
+
+    public CalculatorClass(){
+        decimalFormat = new DecimalFormat("###,###.#####");
+    }
 
     public String getDecimal(String number){
         String temp = number.replace(",", "");
@@ -55,6 +64,9 @@ public class CalculatorClass {
         if (firstInput) {
             if(lastOperator.equals("=")){
                 resultNumber = doubleResultNumber(resultNumber, lastNumber, operator);
+                if(lastNumber == 0 && operator.equals("/")){
+                    return "error";
+                }
                 operatorStr="";
             } else {
                 operator = lastOperator;
@@ -70,6 +82,9 @@ public class CalculatorClass {
         } else {
             lastNumber = Double.parseDouble(getResultNumber.replace(",", ""));
             resultNumber = doubleResultNumber(resultNumber, lastNumber, operator);
+            if(lastNumber == 0 && operator.equals("/")){
+                return "error";
+            }
             if(lastOperator.equals("=")){
                 operatorStr = "";
             }
