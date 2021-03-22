@@ -142,15 +142,7 @@ public class MainActivity extends AppCompatActivity {
         String operator = view.getTag().toString();
         String getNumber = calculatorClass.getResult(firstInput, getResultNumber, operator);
         if(getNumber.equals("error")){
-            resultTextView.setText("오류");
-            for(int i=0;i<operator_btn.length;i++){
-                operator_btn[i].setClickable(false);
-            }
-            decimalButton.setClickable(false);
-
-            for(int i=0;i<number_btn.length;i++){
-                number_btn[i].setClickable(false);
-            }
+            calculateError();
             return;
         }
         resultTextView.setText(getNumber);
@@ -159,6 +151,32 @@ public class MainActivity extends AppCompatActivity {
         }
         historyTextView.setText(calculatorClass.getOperatorStr());
         firstInput = true;
+    }
+
+    private void calculateError() {
+        resultTextView.setText("오류");
+        for(int i=0;i<operator_btn.length;i++){
+            operator_btn[i].setClickable(false);
+            operator_btn[i].setBackground(getResources().getDrawable(R.drawable.number_button_click));
+            operator_btn[i].setTextColor(getResources().getColor(R.color.gray));
+        }
+        decimalButton.setClickable(false);
+        decimalButton.setBackground(getResources().getDrawable(R.drawable.number_button_click));
+        decimalButton.setTextColor(getResources().getColor(R.color.gray));
+
+        for(int i=0;i<number_btn.length;i++){
+            number_btn[i].setClickable(false);
+            number_btn[i].setBackground(getResources().getDrawable(R.drawable.number_button_click));
+            number_btn[i].setTextColor(getResources().getColor(R.color.gray));
+
+        }
+
+        backSpaceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearClick(view);
+            }
+        });
     }
 
     private void numberClick(View view) {
@@ -203,7 +221,4 @@ public class MainActivity extends AppCompatActivity {
         resultTextView.setText(CalculatorClass.CLEAR_INPUT);
     }
 
-    public TextView getResultView(){
-        return resultTextView;
-    }
 }

@@ -10,7 +10,7 @@
     android:background="#333333">
 
     <LinearLayout
-        android:backgroundTint="#333333"
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="30"
@@ -29,7 +29,7 @@
                 android:id="@+id/history_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
         </ScrollView>
@@ -39,10 +39,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
-            android:gravity="center_vertical|right"
+            android:gravity="center_vertical|end"
             android:textColor="@color/gray"
             android:textSize="60sp"
-            android:text="0"
+            android:text="@string/btn_zero"
             android:autoSizeTextType="uniform"
             android:autoSizeMaxTextSize="50sp"
             android:autoSizeMinTextSize="10sp"/>
@@ -71,14 +71,13 @@
             android:weightSum="100"
             android:orientation="horizontal">
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/btn_clear"
-                android:text="AC"
+                android:text="@string/all_clear"
                 android:textSize="30sp"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -86,14 +85,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/btn_entry_clear"
-                android:text="CE"
+                android:text="@string/entry_clear"
                 android:textSize="30sp"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -101,14 +99,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/btn_back_space"
-                android:text="BS"
+                android:text="@string/back_space"
                 android:textSize="30sp"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -116,14 +113,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/operator_4"
-                android:text="÷"
+                android:text="@string/opt_divide"
                 android:textSize="45sp"
-                android:backgroundTint="@color/darkGray"
                 android:textColor="@color/black"
                 android:tag="/"/>
 
@@ -137,15 +133,14 @@
             android:weightSum="100"
             android:orientation="horizontal">
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_7"
-                android:text="7"
+                android:text="@string/btn_seven"
                 android:textSize="45sp"
                 android:tag="7"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -153,15 +148,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_8"
-                android:text="8"
+                android:text="@string/btn_eight"
                 android:textSize="45sp"
                 android:tag="8"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -169,15 +163,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_9"
-                android:text="9"
+                android:text="@string/btn_nine"
                 android:textSize="45sp"
                 android:tag="9"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -185,14 +178,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/operator_3"
-                android:text="×"
+                android:text="@string/opt_multiply"
                 android:textSize="45sp"
-                android:backgroundTint="@color/darkGray"
                 android:textColor="@color/black"
                 android:tag="*"/>
 
@@ -206,15 +198,14 @@
             android:weightSum="100"
             android:orientation="horizontal">
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_4"
-                android:text="4"
+                android:text="@string/btn_four"
                 android:textSize="45sp"
                 android:tag="4"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -222,15 +213,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_5"
-                android:text="5"
+                android:text="@string/btn_five"
                 android:textSize="45sp"
                 android:tag="5"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -238,15 +228,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_6"
-                android:text="6"
+                android:text="@string/btn_six"
                 android:textSize="45sp"
                 android:tag="6"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -254,14 +243,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/operator_2"
-                android:text="-"
+                android:text="@string/opt_minus"
                 android:textSize="45sp"
-                android:backgroundTint="@color/darkGray"
                 android:textColor="@color/black"
                 android:tag="-"/>
 
@@ -274,15 +262,14 @@
             android:weightSum="100"
             android:orientation="horizontal">
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_1"
-                android:text="1"
+                android:text="@string/btn_one"
                 android:textSize="45sp"
                 android:tag="1"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -290,15 +277,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_2"
-                android:text="2"
+                android:text="@string/btn_two"
                 android:textSize="45sp"
                 android:tag="2"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -306,15 +292,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/number_btn_3"
-                android:text="3"
+                android:text="@string/btn_three"
                 android:textSize="45sp"
                 android:tag="3"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -322,14 +307,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/operator_1"
-                android:text="+"
+                android:text="@string/opt_plus"
                 android:textSize="45sp"
-                android:backgroundTint="@color/darkGray"
                 android:textColor="@color/black"
                 android:tag="+"/>
 
@@ -342,15 +326,14 @@
             android:weightSum="100"
             android:orientation="horizontal">
 
-            <Button
+            <com.foo.calculator_v2.NumBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="49"
                 android:id="@+id/number_btn_0"
-                android:text="0"
+                android:text="@string/btn_zero"
                 android:textSize="45sp"
                 android:tag="0"
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -359,16 +342,15 @@
                 android:layout_weight="1" />
 
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/btn_decimal"
-                android:text="."
+                android:text="@string/opt_dot"
                 android:textStyle="bold"
                 android:textSize="45sp"
                 android:tag="."
-                android:backgroundTint="@color/gray"
                 android:textColor="@color/black"/>
 
             <Space
@@ -376,14 +358,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <Button
+            <com.foo.calculator_v2.OptBtn
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="24"
                 android:id="@+id/operator_0"
-                android:text="="
+                android:text="@string/opt_equal"
                 android:textSize="45sp"
-                android:backgroundTint="@color/darkGray"
                 android:textColor="@color/black"
                 android:tag="="/>
 
