@@ -4,3 +4,6 @@
  
 참고 링크
 https://www.youtube.com/watch?v=BaLBM3fuuck&list=PLMocbRXgGcjYXsR9Upp5qqDoYkui08A0G&index=25
+
+
+기본 UI
